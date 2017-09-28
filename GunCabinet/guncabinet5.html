@@ -1,0 +1,147 @@
+﻿<!--
+    Author: Chase Brandner
+    Class: CS 2550
+    Section: 601
+    Project: 9 - Forms & MVC part 5
+-->
+
+
+<!doctype html>
+<html>
+<head>
+    <title>My Gun Cabinet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/gunModel5.js" type="text/javascript"></script>
+    <script src="scripts/gunController5.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+
+            gunModel.createGun(36554558, "Bushmaster", "XM15-E2S", "Rifle", ".223 REM", "Black", true);
+            gunModel.createGun(77789996, "Mossberg", "Maverik", "Shotgun", "12 GA", "Black", false);
+            gunModel.createGun(11368876, "Browning", "M1911-380", "Pistol", ".380 Auto", "Black", false);
+            gunModel.createGun(99655841, "Savage", "Model 111", "Rifle", "30-06 SPRG", "Olive", true);
+
+            controller.initialize();
+        });
+    </script>
+</head>
+<body class="bg-1">
+    <div class="container bg-2">
+        <div class="row">
+            <h1 class="marg">Gun Entry Form</h1>
+            <form name="gunInfoEdit" class="form-horizontal">
+                <div class="form-group">
+                    <label for="sEdit" class="control-label col-sm-2">Serial Number:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="serialEdit" class="form-control edit" id="sEdit" />
+                        <div id="serialError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="manuEdit" class="control-label col-sm-2">Manufacturer:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="manuEdit" class="form-control edit" id="manuEdit" />
+                        <div id="manuError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modelEdit" class="control-label col-sm-2">Model:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="modelEdit" class="form-control edit" id="modelEdit" />
+                        <div id="modelError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Type:</label>
+                    <div class="col-sm-9">
+                        <div class="radio-inline">
+                            <label><input type="radio" name="type" value="Rifle" id="typeRifleRadio" />Rifle</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="type" value="Pistol" id="typePistolRadio" />Pistol</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="type" value="Shotgun" id="typeShotgunRadio" />Shotgun</label>
+                        </div>
+                        <div id="typeError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cEdit" class="control-label col-sm-2">Caliber:</label>
+                    <div class="col-sm-9">
+                        <select name="calSelect" class="form-control edit" id="cEdit">
+                            <option value="null" checked>-- None --</option>
+                            <option value="9mm">9mm</option>
+                            <option value=".380 Auto">.380 Auto</option>
+                            <option value="30-06 SPRG">30-06 SPRG</option>
+                            <option value=".223 REM">.223 REM</option>
+                            <option value="5.56x45mm">5.56x45mm</option>
+                            <option value="12 GA">12 GA</option>
+                            <option value="20 GA">20 GA</option>
+                            <option value=".22 LR">.22 LR</option>
+                        </select>
+                        <div id="calError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Color:</label>
+                    <div class="col-sm-9">
+                        <div class="radio-inline">
+                            <label><input type="radio" name="color" value="Wood" id="colorWoodRadio" />Wood</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="color" value="Black" id="colorBlackRadio" />Black</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="color" value="Olive" id="colorOliveRadio" />Olive</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="color" value="Tan" id="colorTanRadio" />Tan</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="color" value="Other" id="colorOtherRadio" />Other</label>
+                        </div>
+                        <div id="colorError" class="text-danger bg-danger"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Modifications:</label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="modsCheck" id="mods"><strong>Yes</strong></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <button type="button" id="createBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create</button>
+                        <button type="button" id="saveBtn" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp;Save</button>
+                        <button type="button" id="cancelBtn" class="btn btn-warning"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Cancel</button>
+                    </div>
+                    <div id="alert" class="col-sm-3"></div>
+                    <div id="alert2" class="col-sm-3"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container bg-2">
+        <h1 class="marg-2">Gun Cabinet Contents</h1>
+        <div class="container-fluid bg-3">
+            <div class="row">
+                <table id="gunTable" class="table table-bordered table-striped">
+                    <tr>
+                        <th>Serial #</th>
+                        <th>Make/Model</th>
+                        <th>Caliber</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

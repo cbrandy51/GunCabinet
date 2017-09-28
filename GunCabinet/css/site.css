@@ -1,0 +1,48 @@
+﻿.bg-1 {
+    background-image: url(../img/background.jpg);
+}
+
+.bg-2 {
+    background-color: slategray;
+}
+
+.bg-3 {
+    background-color: lightgray;
+}
+
+.marg {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+.marg-2 {
+    margin-top: 30px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+label {
+    font-size: 14pt;
+    font-variant: small-caps;
+}
+
+.table {
+    font-size: 12pt;
+}
+
+.edit {
+    font-size: 12pt;
+}
+
+th {
+    font-variant: small-caps;
+}
+
+.btn {
+    font-variant: small-caps;
+    font-weight: bold;
+}
